@@ -1,4 +1,4 @@
-package main
+package findlocation
 
 import "strings"
 

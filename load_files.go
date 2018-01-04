@@ -1,4 +1,4 @@
-package main
+package findlocation
 
 import (
 	"strings"
@@ -7,10 +7,14 @@ import (
 	"io"
 	"io/ioutil"
 	"encoding/csv"
+	"runtime"
+	"path"
 )
 
 func loadSingleColumnFile(fileName string) []string {
-	data, err := ioutil.ReadFile(fileName)
+	_, absolutePath, _, _ := runtime.Caller(1)
+	filePath := path.Join(path.Dir(absolutePath), fileName)
+	data, err := ioutil.ReadFile(filePath)
 
 	if err != nil {
 		errString := []string{"error opening file '", fileName, "'"};
@@ -29,7 +33,9 @@ func loadSingleColumnFile(fileName string) []string {
 }
 
 func loadTwoColumnFile(fileName string) map[string]string {
-	data, err := ioutil.ReadFile(fileName)
+	_, absolutePath, _, _ := runtime.Caller(1)
+	filePath := path.Join(path.Dir(absolutePath), fileName)
+	data, err := ioutil.ReadFile(filePath)
 
 	if err != nil {
 		errString := []string{"error opening file '", fileName, "'"};
