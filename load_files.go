@@ -21,6 +21,7 @@ func loadSingleColumnFile(fileName string) []string {
 	if err != nil {
 		errString := []string{"error opening file '", fileName, "'"};
     fmt.Println(strings.Join(errString, " "));
+		fmt.Println(err)
 		os.Exit(1)
 	}
 
@@ -44,6 +45,7 @@ func loadTwoColumnFile(fileName string) map[string]string {
 	if err != nil {
 		errString := []string{"error opening file '", fileName, "'"};
     fmt.Println(strings.Join(errString, " "));
+		fmt.Println(err)
 		os.Exit(1)
 	}
 
