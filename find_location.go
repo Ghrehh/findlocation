@@ -16,7 +16,7 @@ type LocationFinder struct {
 func NewLocationFinder() *LocationFinder {
 	return &LocationFinder {
 		AlternativeNamesForCitiesAndCountries: loadTwoColumnFile("data/alternative_names_for_cities_and_countries.tsv"),
-		AustralianStatesAndCodes: loadTwoColumnFile("data/australian_states_and_Codes.tsv"),
+		AustralianStatesAndCodes: loadTwoColumnFile("data/australian_states_and_codes.tsv"),
 		CanadianProvincesAndCodes: loadTwoColumnFile("data/canadian_provinces_and_codes.tsv"),
 		CitiesWithPopulationsOver15000: loadTwoColumnFile("data/cities_with_populations_over_15000.tsv"),
 		CountriesAndCodes: loadTwoColumnFile("data/countries_and_codes.tsv"),
