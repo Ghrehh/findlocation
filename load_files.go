@@ -14,6 +14,8 @@ import (
 func loadSingleColumnFile(fileName string) []string {
 	_, absolutePath, _, _ := runtime.Caller(1)
 	filePath := path.Join(path.Dir(absolutePath), fileName)
+	fmt.Println(filePath)
+
 	data, err := ioutil.ReadFile(filePath)
 
 	if err != nil {
@@ -35,6 +37,8 @@ func loadSingleColumnFile(fileName string) []string {
 func loadTwoColumnFile(fileName string) map[string]string {
 	_, absolutePath, _, _ := runtime.Caller(1)
 	filePath := path.Join(path.Dir(absolutePath), fileName)
+	fmt.Println(filePath)
+
 	data, err := ioutil.ReadFile(filePath)
 
 	if err != nil {
