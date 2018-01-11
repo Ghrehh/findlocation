@@ -4,7 +4,6 @@ import (
 	"testing"
 )
 
-
 var countriesAndCodes = map[string]string{
 	"countriesAndCodesKey": "countriesAndCodesValue",
 }
@@ -47,82 +46,25 @@ func errorMessage(result string, expectedResult string) string {
 }
 
 func TestFindLocationCountriesAndCodesByValue(t *testing.T) {
-	result := locationFinder.FindLocation("countriesAndCodesKey")
-	expectedResult := "countriesAndCodesValue"
-
-	if result != expectedResult {
-		t.Error(errorMessage(result, expectedResult))
+	tests := map[string]string{
+		"countriesAndCodesKey": "countriesAndCodesValue",
+		"citiesWithPopulationsOver15000Key": "citiesWithPopulationsOver15000Value",
+		"alternativeNamesForCitiesAndCountriesKey" : "alternativeNamesForCitiesAndCountriesValue",
+		"usStates": "US",
+		"canadianProvincesAndCodesKey": "CA",
+		"australianStatesAndCodesKey": "AU",
+		"countriesAndCodesValue": "countriesAndCodesValue",
+		"usStateCodes": "US",
+		"canadianProvincesAndCodesValue": "CA",
+		"australianStatesAndCodesValue": "AU",
+		"random gibberish": "",
 	}
-}
 
-func TestFindLocationCitiesWithPopulationsOver15000(t *testing.T) {
-	result := locationFinder.FindLocation("citiesWithPopulationsOver15000Key")
-	expectedResult := "citiesWithPopulationsOver15000Value"
+	for searchString, expectedResult := range tests {
+		result := locationFinder.FindLocation(searchString)
 
-	if result != expectedResult {
-		t.Error(errorMessage(result, expectedResult))
-	}
-}
-
-func TestFindLocationAlternativeNamesForCitiesAndCountries(t *testing.T) {
-	result := locationFinder.FindLocation("alternativeNamesForCitiesAndCountriesKey")
-	expectedResult := "alternativeNamesForCitiesAndCountriesValue"
-
-	if result != expectedResult {
-		t.Error(errorMessage(result, expectedResult))
-	}
-}
-
-func TestFindLocationUsStates(t *testing.T) {
-	result := locationFinder.FindLocation("usStates")
-	expectedResult := "US"
-
-	if result != expectedResult {
-		t.Error(errorMessage(result, expectedResult))
-	}
-}
-
-func TestFindLocationUkCounties(t *testing.T) {
-	result := locationFinder.FindLocation("ukCounties")
-	expectedResult := "GB"
-
-	if result != expectedResult {
-		t.Error(errorMessage(result, expectedResult))
-	}
-}
-
-func TestFindLocationCanadianProvinces(t *testing.T) {
-	result := locationFinder.FindLocation("canadianProvincesAndCodesKey")
-	expectedResult := "CA"
-
-	if result != expectedResult {
-		t.Error(errorMessage(result, expectedResult))
-	}
-}
-
-func TestFindLocationAustralianStatesAndCodes(t *testing.T) {
-	result := locationFinder.FindLocation("australianStatesAndCodesKey")
-	expectedResult := "AU"
-
-	if result != expectedResult {
-		t.Error(errorMessage(result, expectedResult))
-	}
-}
-
-func TestFindLocationCountriesAndCodesByKey(t *testing.T) {
-	result := locationFinder.FindLocation("countriesAndCodesValue")
-	expectedResult := "countriesAndCodesValue"
-
-	if result != expectedResult {
-		t.Error(errorMessage(result, expectedResult))
-	}
-}
-
-func TestFindLocationUsStateCodes(t *testing.T) {
-	result := locationFinder.FindLocation("usStateCodes")
-	expectedResult := "US"
-
-	if result != expectedResult {
-		t.Error(errorMessage(result, expectedResult))
+		if result != expectedResult {
+			t.Error(errorMessage(result, expectedResult))
+		}
 	}
 }
