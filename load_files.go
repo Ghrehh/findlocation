@@ -2,8 +2,7 @@ package findlocation
 
 import (
 	"strings"
-	"os"
-	"fmt"
+	"log"
 	"io"
 	"encoding/csv"
 )
@@ -12,8 +11,7 @@ func loadSingleColumnFile(fileName string) []string {
 	data, err := Asset(fileName)
 
 	if err != nil {
-    fmt.Println("error opening file '" + fileName +"'");
-		os.Exit(1)
+    log.Fatal("error opening file '" + fileName +"'")
 	}
 
 	lines := strings.Split(string(data), "\n")
@@ -30,8 +28,7 @@ func loadTwoColumnFile(fileName string) map[string]string {
 	data, err := Asset(fileName)
 
 	if err != nil {
-    fmt.Println("error opening file '" + fileName +"'");
-		os.Exit(1)
+    log.Fatal("error opening file '" + fileName +"'")
 	}
 
 	r := csv.NewReader(strings.NewReader(string(data)))
@@ -47,8 +44,7 @@ func loadTwoColumnFile(fileName string) map[string]string {
 		}
 
 		if err != nil {
-    	fmt.Println("error parsing file '" + fileName +"'");
-			os.Exit(1)
+    	log.Fatal("error parsing file '" + fileName +"'")
 		}
 
 		output[record[1]] = record[0]
